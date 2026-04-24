@@ -1,62 +1,105 @@
+<div align="center">
+
+<img src="https://img.shields.io/badge/AI%20Welfare%20Assist-v1.0-blue?style=for-the-badge&logo=react" alt="Version" />
+<img src="https://img.shields.io/badge/Python-Flask-green?style=for-the-badge&logo=python" alt="Flask" />
+<img src="https://img.shields.io/badge/ML-Scikit--learn-orange?style=for-the-badge&logo=scikit-learn" alt="Scikit-learn" />
+<img src="https://img.shields.io/badge/Status-Active-brightgreen?style=for-the-badge" alt="Status" />
+
+<br />
+
 # 🤝 AI Welfare Assist
 
-> An AI-powered platform that predicts poverty levels and recommends Indian government welfare schemes with step-by-step application guidance.
+### *Predict Poverty. Recommend Solutions.*
 
-![AI Welfare Assist](https://img.shields.io/badge/Status-Active-brightgreen)
-![Python](https://img.shields.io/badge/Python-3.10+-blue)
-![React](https://img.shields.io/badge/React-18-61DAFB)
-![Flask](https://img.shields.io/badge/Flask-3.0-black)
-![ML](https://img.shields.io/badge/ML-Random%20Forest-orange)
-![License](https://img.shields.io/badge/License-MIT-yellow)
+**An AI-driven platform that predicts poverty levels using Machine Learning and instantly connects Indian citizens with the right government welfare schemes.**
 
----
+<br />
+<br />
 
-## 📌 Problem Statement
-
-In India, over **228 million people** live below the poverty line. Millions of eligible citizens never access government welfare schemes due to:
-- Lack of awareness about available schemes
-- Complex application processes
-- No personalized guidance based on individual situations
-
-**AI Welfare Assist** solves this by using Machine Learning to assess poverty levels and instantly recommend the most relevant government schemes with direct apply links and step-by-step guidance.
+</div>
 
 ---
 
-## 🎯 Key Features
+## 📌 Table of Contents
 
-| Feature | Description |
+- [About the Project](#-about-the-project)
+- [Features](#-features)
+- [Tech Stack](#-tech-stack)
+- [Project Structure](#-project-structure)
+- [How It Works](#-how-it-works)
+- [Machine Learning Model](#-machine-learning-model)
+- [Government Schemes Covered](#-government-schemes-covered)
+- [Quick Start](#-quick-start)
+- [API Documentation](#-api-documentation)
+- [Screenshots](#-screenshots)
+- [Future Scope](#-future-scope)
+- [Contributing](#-contributing)
+
+---
+
+## 🎯 About the Project
+
+> **228 Million+** people in India live below the poverty line. Most of them are unaware of the 50+ government welfare schemes they are eligible for.
+
+**AI Welfare Assist** bridges this gap. A user fills a simple form with their socioeconomic details — the AI model predicts their poverty level and immediately shows all the government schemes they qualify for, with direct apply links and step-by-step guidance.
+
+### 🌟 Why This Project?
+
+| Problem | Our Solution |
 |---------|-------------|
-| 🔮 **AI Poverty Prediction** | Predicts poverty level (Extreme / High / Medium / Low) using Random Forest ML model |
-| 📋 **Scheme Recommendation** | Recommends personalized government schemes based on prediction |
-| 🔗 **Direct Apply Links** | Links to official government portals for each scheme |
-| 📝 **Step-by-Step Guidance** | Online and offline application steps for every scheme |
-| 📊 **Analytics Dashboard** | Visual charts showing poverty distribution across Indian states |
-| 🎯 **Confidence Score** | AI confidence percentage shown with every prediction |
+| Citizens unaware of welfare schemes | AI recommends schemes based on their exact profile |
+| Complex application processes | Step-by-step guidance for each scheme |
+| Language and access barriers | Simple UI, direct official links |
+| No single platform for all schemes | 50+ schemes across 4 poverty levels in one place |
 
 ---
 
-## 🛠️ Tech Stack
+## ✨ Features
+
+### 🔮 Poverty Prediction
+- AI-powered prediction using **Random Forest Classifier**
+- Analyses **10+ socioeconomic factors** (age, income, education, house type, land ownership, etc.)
+- Returns poverty level: **Extreme / High / Medium / Low**
+- Shows **confidence score** (%) of the prediction
+
+### 📋 Scheme Recommendation
+- Automatically recommends government schemes based on predicted poverty level
+- Covers **50+ real Indian government schemes**
+- Each scheme includes benefit details, eligibility criteria, and official apply link
+
+### 🔗 Step-by-Step Apply Guidance
+- Detailed application process for every scheme
+- Clearly marked **ONLINE** and **OFFLINE** steps
+- Direct links to official government portals (PMJAY, PM Kisan, NREGA, etc.)
+
+### 📊 Analytics Dashboard
+- Bar chart: Poverty distribution across 6 major Indian states
+- Pie chart: National poverty level breakdown
+- Live statistics: Total predictions, schemes applied, states covered
+
+---
+
+## 🛠 Tech Stack
 
 ### Frontend
-- **React 18** — Component-based UI
-- **Tailwind CSS** — Modern dark theme styling
-- **Recharts** — Bar charts and Pie charts
-- **Axios** — API communication
-- **React Router** — Page navigation
+| Technology | Purpose |
+|-----------|---------|
+| **React 18** | UI framework |
+| **React Router v6** | Client-side routing |
+| **Recharts** | Data visualisation (bar & pie charts) |
+| **Axios** | HTTP requests to Flask API |
+| **Tailwind CSS** | Utility styling |
+| **Vite** | Build tool & dev server |
 
 ### Backend
-- **Python Flask** — REST API server
-- **Flask-CORS** — Cross-origin request handling
-- **Scikit-learn** — Random Forest Classifier
-- **Pandas & NumPy** — Data processing
-- **Joblib** — Model serialization
-
-### Machine Learning
-- **Algorithm:** Random Forest Classifier
-- **Training Data:** Indian socioeconomic dataset (80 records)
-- **Features:** Age, Income, Family Size, Education, Employment, Land Ownership, House Type, Electricity, Water Access, State
-- **Target:** Poverty Level (Extreme / High / Medium / Low)
-- **Accuracy:** 95%+
+| Technology | Purpose |
+|-----------|---------|
+| **Python 3.10+** | Core language |
+| **Flask** | REST API server |
+| **Flask-CORS** | Cross-origin request handling |
+| **Scikit-learn** | Random Forest ML model |
+| **NumPy** | Numerical computation |
+| **Joblib** | Model serialisation (.pkl) |
 
 ---
 
@@ -66,217 +109,343 @@ In India, over **228 million people** live below the poverty line. Millions of e
 ai-welfare-assist/
 │
 ├── backend/
-│   ├── app.py                  ← Flask API with all routes
+│   ├── app.py                        ← Flask REST API (main entry point)
+│   ├── requirements.txt              ← Python dependencies
 │   ├── model/
-│   │   ├── train_model.py      ← ML model training script
-│   │   ├── poverty_model.pkl   ← Trained Random Forest model
-│   │   └── state_encoder.pkl   ← Label encoder for states
+│   │   ├── train_model.py            ← ML model training script
+│   │   ├── poverty_model.pkl         ← Trained Random Forest model
+│   │   └── state_encoder.pkl         ← Label encoder for Indian states
 │   └── data/
-│       └── poverty_data.csv    ← Training dataset
+│       └── poverty_data.csv          ← Training dataset
 │
 └── frontend/
-    └── src/
-        ├── components/
-        │   ├── Navbar.jsx       ← Navigation bar
-        │   └── ResultCard.jsx   ← Prediction result display
-        ├── pages/
-        │   ├── Home.jsx         ← Landing page
-        │   ├── Predict.jsx      ← AI prediction form
-        │   ├── Schemes.jsx      ← Scheme recommendations
-        │   └── Dashboard.jsx    ← Analytics dashboard
-        └── App.jsx              ← Main app with routing
+    ├── public/
+    ├── src/
+    │   ├── components/
+    │   │   ├── Navbar.jsx             ← Navigation bar
+    │   │   └── ResultCard.jsx         ← Prediction result display
+    │   ├── pages/
+    │   │   ├── Home.jsx               ← Landing page
+    │   │   ├── Predict.jsx            ← Prediction form page
+    │   │   ├── Schemes.jsx            ← Scheme recommendations page
+    │   │   └── Dashboard.jsx          ← Analytics dashboard
+    │   ├── App.jsx                    ← Root component with routing
+    │   ├── main.jsx                   ← React entry point
+    │   └── index.css                  ← Global styles
+    ├── package.json
+    └── vite.config.js
 ```
 
 ---
 
-## 🚀 Getting Started
+## ⚙️ How It Works
+
+```
+User fills form
+      │
+      ▼
+React frontend sends POST /api/predict
+      │
+      ▼
+Flask backend receives 10 features
+      │
+      ▼
+State encoded with LabelEncoder
+      │
+      ▼
+Random Forest model predicts poverty level
+      │
+      ▼
+Returns: { poverty_level, confidence }
+      │
+      ▼
+Frontend fetches GET /api/schemes?level=<level>
+      │
+      ▼
+User sees matching government schemes
+with benefit details + apply steps
+```
+
+### Input Features Used for Prediction
+
+| Feature | Type | Example Values |
+|---------|------|---------------|
+| `age` | Integer | 18–80 |
+| `income_monthly` | Integer (₹) | 0–50000 |
+| `family_size` | Integer | 1–15 |
+| `education_level` | 0–3 | 0=None, 1=Primary, 2=Secondary, 3=Graduate |
+| `employment_status` | 0–1 | 0=Unemployed, 1=Employed |
+| `land_ownership` | 0–1 | 0=No Land, 1=Owns Land |
+| `house_type` | 0–3 | 0=Kutcha, 1=Semi-Pucca, 2=Pucca, 3=Flat |
+| `access_to_electricity` | 0–1 | 0=No, 1=Yes |
+| `access_to_water` | 0–1 | 0=No, 1=Yes |
+| `state` | String | UP, Bihar, MH, Delhi, etc. |
+
+---
+
+## 🤖 Machine Learning Model
+
+### Model: Random Forest Classifier (Scikit-learn)
+
+| Metric | Value |
+|--------|-------|
+| Algorithm | Random Forest Classifier |
+| Training Accuracy | ~95%+ |
+| Features Used | 10 socioeconomic features |
+| Output Classes | Extreme, High, Medium, Low |
+| Serialisation | Joblib (.pkl) |
+
+### Training the Model
+
+```bash
+cd backend
+python model/train_model.py
+```
+
+This generates two files:
+- `model/poverty_model.pkl` — trained classifier
+- `model/state_encoder.pkl` — fitted label encoder for states
+
+---
+
+## 🏛 Government Schemes Covered
+
+### 🚨 Extreme Poverty Level
+| Scheme | Benefit |
+|--------|---------|
+| MGNREGA | 100 days guaranteed work, ₹220–357/day wages |
+| PM Jan Dhan Yojana | Free zero-balance bank account + ₹2L insurance |
+| National Food Security (Ration Card) | 5 kg grain/person/month at ₹2–3/kg |
+| PM Awas Yojana (Rural) | ₹1.2–1.3 Lakh for house construction |
+
+### ⚠️ High Poverty Level
+| Scheme | Benefit |
+|--------|---------|
+| Ayushman Bharat PM-JAY | ₹5 Lakh free health insurance per family/year |
+| PM Kisan Samman Nidhi | ₹6,000/year direct to farmer bank accounts |
+| National Social Assistance (Pension) | ₹300–500/month pension for elderly, widows, disabled |
+
+### 📊 Medium Poverty Level
+| Scheme | Benefit |
+|--------|---------|
+| PM MUDRA Yojana | Business loan up to ₹10 Lakh without collateral |
+| PM Skill India (PMKVY) | Free skill training + ₹8,000 cash reward |
+| PM Suraksha Bima | ₹2 Lakh accident insurance at just ₹20/year |
+
+### ✅ Low Poverty Level
+| Scheme | Benefit |
+|--------|---------|
+| PM Fasal Bima Yojana | Crop insurance at 1.5–2% premium, rest by govt |
+| Sukanya Samriddhi Yojana | 8.2% interest savings account for girl child |
+| PM Jeevan Jyoti Bima | ₹2 Lakh life insurance at ₹436/year |
+
+---
+
+## 🚀 Quick Start
 
 ### Prerequisites
-- Python 3.10+
-- Node.js 18+
-- npm
+
+Make sure you have the following installed:
+- [Node.js](https://nodejs.org/) v18+
+- [Python](https://python.org/) 3.10+
+- [Git](https://git-scm.com/)
+
+---
 
 ### 1. Clone the Repository
+
 ```bash
 git clone https://github.com/YOUR_USERNAME/ai-welfare-assist.git
 cd ai-welfare-assist
 ```
 
-### 2. Setup Backend
+---
+
+### 2. Set Up the Backend
+
 ```bash
 cd backend
-pip install flask flask-cors scikit-learn pandas numpy joblib
+
+# Install Python dependencies
+pip install -r requirements.txt
+
+# Train the ML model (generates .pkl files)
 python model/train_model.py
+
+# Start the Flask server
 python app.py
 ```
-Backend runs at: `http://localhost:5000`
 
-### 3. Setup Frontend
-```bash
-cd frontend
-npm install
-npm run dev
-```
-Frontend runs at: `http://localhost:5173`
+✅ Backend runs at: `http://localhost:5000`
 
 ---
 
-## 🔌 API Endpoints
+### 3. Set Up the Frontend
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/health` | Check API status |
-| POST | `/api/predict` | Predict poverty level |
-| GET | `/api/schemes?level=High` | Get schemes by poverty level |
+Open a **new terminal**:
 
-### Predict API Example
+```bash
+cd frontend
 
-**Request:**
+# Install Node dependencies
+npm install
+
+# Start the development server
+npm run dev
+```
+
+✅ Frontend runs at: `http://localhost:5173`
+
+---
+
+### 4. Open the App
+
+Visit **[http://localhost:5173](http://localhost:5173)** in your browser.
+
+---
+
+### Python Dependencies (`requirements.txt`)
+
+```
+flask
+flask-cors
+scikit-learn
+numpy
+joblib
+pandas
+```
+
+---
+
+## 📡 API Documentation
+
+Base URL: `http://localhost:5000`
+
+---
+
+### `GET /api/health`
+
+Check if the API is running.
+
+**Response:**
 ```json
-POST /api/predict
 {
-  "age": 32,
-  "income_monthly": 1500,
-  "family_size": 6,
-  "education_level": 0,
-  "employment_status": 0,
-  "land_ownership": 0,
-  "house_type": 0,
-  "access_to_electricity": 0,
-  "access_to_water": 0,
-  "state": "Bihar"
+  "status": "AI Welfare Assist API is running"
+}
+```
+
+---
+
+### `POST /api/predict`
+
+Predict poverty level for a given profile.
+
+**Request Body:**
+```json
+{
+  "age": 35,
+  "income_monthly": 4000,
+  "family_size": 5,
+  "education_level": "1",
+  "employment_status": "0",
+  "land_ownership": "0",
+  "house_type": "0",
+  "access_to_electricity": "1",
+  "access_to_water": "0",
+  "state": "UP"
 }
 ```
 
 **Response:**
 ```json
 {
-  "poverty_level": "Extreme",
-  "confidence": 94.0,
+  "poverty_level": "High",
+  "confidence": 87.4,
   "status": "success"
 }
 ```
 
 ---
 
-## 🤖 ML Model Details
+### `GET /api/schemes?level={level}`
 
-### Algorithm: Random Forest Classifier
-Random Forest was chosen because:
-- Works well with mixed tabular socioeconomic data
-- No feature scaling required
-- Provides confidence scores via `predict_proba`
-- Resistant to overfitting
-- Interpretable for welfare domain
+Get recommended schemes for a poverty level.
 
-### Input Features
+**Parameters:**
+| Param | Type | Values |
+|-------|------|--------|
+| `level` | string | `Extreme`, `High`, `Medium`, `Low` |
 
-| Feature | Type | Values |
-|---------|------|--------|
-| Age | Numeric | 18 - 80 |
-| Monthly Income | Numeric | In Rupees |
-| Family Size | Numeric | Number of members |
-| Education Level | Categorical | 0=None, 1=Primary, 2=Secondary, 3=Graduate |
-| Employment Status | Binary | 0=Unemployed, 1=Employed |
-| Land Ownership | Binary | 0=No Land, 1=Owns Land |
-| House Type | Categorical | 0=Kutcha, 1=Semi-Pucca, 2=Pucca, 3=Flat |
-| Electricity Access | Binary | 0=No, 1=Yes |
-| Water Access | Binary | 0=No, 1=Yes |
-| State | Categorical | Indian states (label encoded) |
-
-### Output Classes
-
-| Level | Description | Income Range |
-|-------|-------------|--------------|
-| Extreme | Severely poor, immediate help needed | Below Rs 1500/month |
-| High | Poor, needs significant support | Rs 1500 - Rs 3500/month |
-| Medium | Moderate poverty, some support needed | Rs 3500 - Rs 6000/month |
-| Low | Mild poverty, near poverty line | Above Rs 6000/month |
+**Response:**
+```json
+{
+  "level": "High",
+  "schemes": [
+    {
+      "name": "Ayushman Bharat PM-JAY",
+      "description": "...",
+      "benefit": "Rs 5 Lakh per family per year...",
+      "eligibility": "Families in SECC 2011 database...",
+      "apply_link": "https://pmjay.gov.in",
+      "process": ["Step 1...", "Step 2...", "..."]
+    }
+  ]
+}
+```
 
 ---
 
-## 📋 Supported Government Schemes
+## 🔮 Future Scope
 
-### Extreme Poverty
-- MGNREGA — 100 Days Work Guarantee
-- PM Jan Dhan Yojana — Free Bank Account
-- National Food Security — Ration Card
-- PMAY — Free House Construction
-
-### High Poverty
-- Ayushman Bharat PM-JAY — Rs 5 Lakh Health Insurance
-- PM Kisan Samman Nidhi — Rs 6000/year for Farmers
-- National Social Assistance — Monthly Pension
-
-### Medium Poverty
-- PM MUDRA Yojana — Business Loan up to Rs 10 Lakh
-- PM Skill India — Free Skill Training + Rs 8000 Reward
-- PM Suraksha Bima — Accident Insurance at Rs 20/year
-
-### Low Poverty
-- PM Fasal Bima — Crop Insurance
-- Sukanya Samriddhi Yojana — Girl Child Savings
-- PM Jeevan Jyoti Bima — Life Insurance at Rs 436/year
+- [ ] **Multi-language support** — Hindi, Tamil, Telugu, Bengali UI
+- [ ] **Aadhaar integration** — auto-fill form from Aadhaar data
+- [ ] **Document checklist** — auto-generate required documents list per scheme
+- [ ] **SMS notifications** — alert users about new eligible schemes
+- [ ] **State-specific schemes** — add schemes specific to each Indian state
+- [ ] **Mobile app** — React Native version for rural accessibility
+- [ ] **Offline mode** — PWA support for low-connectivity areas
+- [ ] **Admin panel** — manage and update schemes without code changes
 
 ---
 
-## 📸 Screenshots
+## 🤝 Contributing
 
-### Home Page
-> Dark themed landing page with key statistics and features
+Contributions are welcome! Here's how:
 
-### Prediction Form
-> 10-parameter form for AI-powered poverty assessment
+```bash
+# 1. Fork the repository
+# 2. Create your feature branch
+git checkout -b feature/your-feature-name
 
-### Results + Scheme Recommendation
-> Instant prediction with confidence score and personalized schemes
+# 3. Commit your changes
+git commit -m "Add: your feature description"
 
-### Analytics Dashboard
-> State-wise bar chart and national distribution pie chart
+# 4. Push to the branch
+git push origin feature/your-feature-name
 
----
-
-## 🌍 Real World Impact
-
-This platform addresses a critical gap in India's welfare delivery system:
-
-- **Awareness Gap** — Millions don't know which schemes they qualify for
-- **Process Complexity** — Application processes are confusing for rural citizens
-- **Language Barrier** — Our simple UI makes it accessible to all
-- **Digital Divide** — Both online and offline steps provided for every scheme
-
----
-
-## 🔮 Future Enhancements
-
-- [ ] Multi-language support (Hindi, Tamil, Telugu, Bengali)
-- [ ] Mobile app for rural accessibility
-- [ ] Real-time government API integration
-- [ ] Aadhaar-based auto form filling
-- [ ] SMS notifications for scheme deadlines
-- [ ] District-level poverty heatmap
-
----
-
-## 👨‍💻 Author
-
-**Jagriti Rai**
+# 5. Open a Pull Request
+```
 
 ---
 
 ## 📄 License
 
-This project is licensed under the MIT License.
+This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
 
 ---
 
-## 🙏 Acknowledgements
+## 👨‍💻 Author
 
-- Government of India for public scheme data
-- Ministry of Rural Development for MGNREGA and PMAY data
-- National Health Authority for Ayushman Bharat data
-- World Bank poverty research datasets
+**Your Name**
+- GitHub: [@YourUsername](https://github.com/jagriti2005)
+- LinkedIn: [Your LinkedIn](https://www.linkedin.com/in/jagriti-rai-a080812a4/)
 
 ---
 
-> **Note:** This project is built for educational and social impact purposes. All government scheme information is sourced from official Indian government portals.
+<div align="center">
+
+**⭐ Star this repo if you found it useful!**
+
+*Built with ❤️ to connect citizens with welfare they deserve.*
+
+</div>
