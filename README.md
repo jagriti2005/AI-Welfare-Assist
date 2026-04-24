@@ -31,7 +31,6 @@
 - [Government Schemes Covered](#-government-schemes-covered)
 - [Quick Start](#-quick-start)
 - [API Documentation](#-api-documentation)
-- [Screenshots](#-screenshots)
 - [Future Scope](#-future-scope)
 - [Contributing](#-contributing)
 
