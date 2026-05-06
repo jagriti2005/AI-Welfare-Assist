@@ -135,7 +135,7 @@ ai-welfare-assist/
     ├── package.json
     └── vite.config.js
 ```
-![Screenshot](images/DashBoard.png)
+![Screenshot](DashBoard.png)
 ---
 
 ## ⚙️ How It Works
