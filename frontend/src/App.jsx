@@ -8,12 +8,12 @@ import Dashboard from './pages/Dashboard'
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-slate-900">
+      <div style={{ minHeight: '100vh' }}>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/predict" element={<Predict />} />
-          <Route path="/schemes" element={<Schemes />} />
+          <Route path="/"          element={<Home />}      />
+          <Route path="/predict"   element={<Predict />}   />
+          <Route path="/schemes"   element={<Schemes />}   />
           <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </div>
